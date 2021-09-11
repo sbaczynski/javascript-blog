@@ -50,35 +50,48 @@ const titleClickHandler = function(event){
       }
 
       /* for each article */
+      /* find all the articles and save them to variable: articles */
       const articles = document.optArticleSelector('.posts .post');
+      let html = '';
       for(let article of articles){
-        ;
+      
+        /* get the article id */
+        const articleId = clickedElement.getAttribute('id');
+
+        /* find the title element */
+        const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+
+        /* get the title from the title element */
+        /* ... */
+
+        /* create HTML of the link */
+        const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+        console.log(linkHTML);
+
+        /* insert link into titleList */
+        html = html + linkHTML;
       }
 
-      /* get the article id */
-      const articleId = clickedElement.getAttribute('id');
+      titleList.innerHTML = html;
 
-      /* find the title element */
-      const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+    }
 
-      /* get the title from the title element */
+    const links = document.querySelectorAll('.titles a');
 
-      /* create HTML of the link */
-      const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-      console.log(linkHTML);
-
-      /* insert link into titleList */
-      titleList.innerHTML = titleList.innerHTML + linkHTML;
-
-
+    for(let link of links){
+      link.addEventListener('click', titleClickHandler);
     }
 
     generateTitleLinks();
 
   }
 
-  const links = document.querySelectorAll('.titles a');
 
-for(let link of links){
-  link.addEventListener('click', titleClickHandler);
-}
+// console.log(links);
+
+
+
+// npm run watch:browsersync
+// ctrl + c
+// git add . && git commit -m "create titlelist"
+// git push
