@@ -2,7 +2,7 @@
 
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles';
+  optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list';
 
 const titleClickHandler = function(event){
@@ -21,7 +21,7 @@ const titleClickHandler = function(event){
   clickedElement.classList.add('active');
   
   /* remove class 'active' from all articles */
-  const articles = document.querySelectorAll('.posts .post');
+  const articles = document.querySelectorAll(optArticleSelector);
   for(let article of articles){
     article.classList.remove('active');
   }
@@ -58,7 +58,6 @@ function generateTitleLinks(){
 
     /* create HTML of the link */
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-    console.log(linkHTML);
 
     /* insert link into titleList */
     html = html + linkHTML;
@@ -77,9 +76,10 @@ function generateTitleLinks(){
 generateTitleLinks();
 
 function generateTags(){
+
   /* find all articles */
   const articles = document.querySelectorAll('.posts .post');
-  
+
   /* START LOOP: for every article: */
     for(let article of articles){
 
@@ -100,7 +100,7 @@ function generateTags(){
     for(let tag of articleTagsArray){
 
       /* generate HTML of the link */
-      const linkHTML = '<li><a href="#tag-' + articleTags + '">' + tagsWrapper + '</a></li>';
+      const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
       console.log(linkHTML);
 
       /* add generated code to html variable */
@@ -113,7 +113,7 @@ function generateTags(){
 
   /* END LOOP: for every article: */
   }
-
+}
 generateTags();
 
 // npm run watch:browsersync
